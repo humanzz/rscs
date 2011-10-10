@@ -1,0 +1,2 @@
+#root=http://www.amazon.com/best-sellers-books-Amazon/zgbs/books/ref=pd_ts_zgc_b_books_morl?pf_rd_p=1313161182&pf_rd_s=right-7&pf_rd_t=101&pf_rd_i=3003015011&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=01HFMK5YE1KMTEVZ5MF3
+#1 pattern<a href="([^"]+)">[^<]*</a>

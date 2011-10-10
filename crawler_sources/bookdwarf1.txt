@@ -1,0 +1,6 @@
+root=http://www.bookdwarf.com/?cat=3  
+1 pattern <a href="(http://www.bookdwarf.com/\?p=\d+)"
+
+
+
+

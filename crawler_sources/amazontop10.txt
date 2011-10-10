@@ -1,0 +1,2 @@
+root=http://www.amazon.com/gp/feature.html/ref=s9_al_bw_feat?ie=UTF8&plgroup=1&docId=1000698051&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=center-3&pf_rd_r=1RB370DV8CPM8MJ411P8&pf_rd_t=101&pf_rd_p=1306875762&pf_rd_i=3003015011
+1 pattern<a href="(http://www.amazon.com/[^"]+/dp/customer-reviews/[^"]+)">[^<]*</a>

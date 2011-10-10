@@ -1,0 +1,2 @@
+root=http://www.shvoong.com/books/
+1 pattern<a href="(http://www.shvoong.com/books/.*?)"

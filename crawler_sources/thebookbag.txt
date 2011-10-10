@@ -1,0 +1,2 @@
+root=http://thebookbag.co.uk/reviews/index.php?title=The_Bookbag
+1 pattern<span class="mw-headline">[\n\t\ ]+<a href="(/reviews/index.php\?title=[0-9a-zA-Z\_\%\-\']+)"\ title="[0-9a-zA-Z\_\%\-\'\ ]+">[0-9a-zA-Z\_\%\-\'\ ]+</a>
