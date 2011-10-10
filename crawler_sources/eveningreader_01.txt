@@ -1,0 +1,2 @@
+root=http://eveningreader.wordpress.com/2009-books/
+1 pattern<em><a href="(http://eveningreader.wordpress.com/2009/.*?/)"

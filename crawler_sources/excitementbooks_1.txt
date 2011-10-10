@@ -1,0 +1,2 @@
+root=http://excitementbooks.blogspot.com/
+1 pattern<h3 class='post-title entry-title'>.*?<a href='(http://excitementbooks.blogspot.com/20.*?\.html)'>.*?</a>.*?</h3>

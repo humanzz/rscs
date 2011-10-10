@@ -1,0 +1,2 @@
+root=http://thedarkphantom.wordpress.com/category/book-reviews/page/4/
+1 pattern<h2><a href="(http://thedarkphantom.wordpress.com/20.*?/)" rel="bookmark" title=".*?">.*?</a></h2>

@@ -1,0 +1,2 @@
+root=http://bookreviewsbycrystal.blogspot.com/search?updated-max=2007-06-27T08%3A57%3A00-04%3A00&max-results=250
+1 pattern<h3 class='post-title entry-title'>.*?<a href='(http://bookreviewsbycrystal.blogspot.com/20[a-zA-Z0-9\-/]+\-by\-[a-zA-Z0-9\-/]+\.html)'>.*?</a>.*?</h3>

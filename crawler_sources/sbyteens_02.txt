@@ -1,0 +1,2 @@
+root=http://sbyteens.wordpress.com/page/2/
+1 pattern<h2 class="post-title"><a href="(http://sbyteens.wordpress.com/20[0-9/]+/review\-[a-zA-Z0-9/-]+/)" title="Review .*?">.*?</a></h2>

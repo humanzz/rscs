@@ -1,0 +1,2 @@
+root=http://excitementbooks.blogspot.com/search?updated-max=2009-10-24T08%3A55%3A00-07%3A00&max-results=7
+1 pattern<h3 class='post-title entry-title'>.*?<a href='(http://excitementbooks.blogspot.com/20.*?\.html)'>.*?</a>.*?</h3>

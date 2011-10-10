@@ -1,0 +1,2 @@
+root=http://tsisterhoodbookshelf.blogspot.com/search?updated-max=2011-06-08T18%3A01%3A00-07%3A00&max-results=100
+1 pattern<h3 class='post-title entry-title'>.*?<a href='(http://tsisterhoodbookshelf.blogspot.com/20.*?\.html)'>.*?</a>.*?</h3>
