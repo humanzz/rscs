@@ -5,6 +5,7 @@ from string import *
 import nltk
 import urllib
 from os import listdir
+import urlparse
 
 workingDir = os.getcwd() + '/crawler_sources/'
 
@@ -15,6 +16,7 @@ class urlSite:
     self.patterns=patterns
     self.content=''
     self.textAdresses=[]
+    self.hostname = urlparse.urlparse(url).hostname
 
 # auxiliar
 def _encode(data):
@@ -46,46 +48,39 @@ def loadingURLFile(f):
       continue
   if url:
     return urlSite(url,pats)
-        
-def extractURLContents():
-  global urls
-  for i in urls:
-    print 'opening ' + i.url
-    f = urllib.urlopen(i.url)
-    i.content=f.read()
-    
-def getTextAdresses():
-  global urls
-  for i in urls:
-    for j in i.patterns:
-      i.textAdresses+=re.findall(j,i.content, re.DOTALL)
+
+def extractURLContents(url):
+  f = urllib.urlopen(url.url)
+  url.content = f.read()
+
+def getTextAdress(url):
+  for pat in url.patterns:
+    url.textAdresses+=re.findall(pat,url.content, re.DOTALL)
 
 def extractURLContentsFromAddress(url):
   f = urllib.urlopen(url)
   return f.read()
 
 def downloadAddresses(url):
+  print url.textAdresses
   for ad in url.textAdresses:
+    
     f = urllib.urlopen(ad)
+    
     html = f.read()
-    #text = nltk.clean_html(html)
+    # TODO create a file that says for each filename, what url it corresponds to
+    urlDir = os.getcwd() + "/corpus/" + url.hostname + '/'
+    if not os.path.exists(urlDir):
+        os.makedirs(urlDir)
     i = 1
-    # TODO should change this lambda to use the domain name
-    fileName = lambda: os.getcwd() + "/corpus/text" + str(i) + ".html"
-  
+    fileName = lambda: urlDir + str(i) + ".html"
     while os.path.exists(fileName()):
-          i = i+1
+      i = i+1
     text_file = open(fileName(), "w")
     text_file.write(html)
     text_file.close()
 
-
 loadingURLDir(workingDir)
-extractURLContents()
-getTextAdresses()
-map(downloadAddresses,urls)
-#for url in urls:
-#  print len(url.content)
-#  print url.patterns
-#  for address in url.textAdresses:
-#    print address
+map(extractURLContents, urls)
+map(getTextAdress, urls)
+map(downloadAddresses, urls)
