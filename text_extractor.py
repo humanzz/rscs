@@ -2,7 +2,6 @@ import lxml.html as lh
 import os
 from os import listdir
 import re
-import nltk
 
 class TextExtractor:
   corpusRoot = os.getcwd() + "/corpus/"
@@ -73,5 +72,5 @@ class TextExtractor:
       if re.match('.+\.html$',f):
         self.processFile(self.directory + f)
         
-#te = TextExtractor('www.bookdwarf.com')
-#te.process()
+te = TextExtractor('www.bookdwarf.com')
+te.process()
