@@ -2,6 +2,7 @@ import lxml.html as lh
 import os
 from os import listdir
 import re
+import nltk
 
 class TextExtractor:
   corpusRoot = os.getcwd() + "/corpus/"
@@ -27,6 +28,36 @@ class TextExtractor:
             text += txt
         result[i] = text
         i+=1
+    elif self.hostname.find('blogspot') > -1:
+        text = ''
+        # get title
+        for divTitle in doc.cssselect('h3.post-title.entry-title a'):
+            text += divTitle.text_content()
+        # get content
+        for divContent in doc.cssselect('.post-body entry-content'):
+             text += divContent.text_content()
+        result[1] = text
+    elif self.hostname.find('wordpress') > -1:
+        text = ''
+        # get title
+        for divTitle in doc.cssselect('.posttitle h2'):
+            text += divTitle.text_content()
+        # get content
+        for divContent in doc.cssselect('.entry'):
+             text += divContent.text_content()
+        result[1] = text
+    elif self.hostname == 'www.shvoong.com':
+        text = ''
+        # get content
+        for divContent in doc.cssselect('.shvoongsummarizer'):
+             text += divContent.text_content()
+        result[1] = text
+    elif self.hostname == 'www.bookdwarf.com':
+        text = ''
+        # get content
+        for divContent in doc.cssselect('.post-bodycopy.clearfix'):
+             text += divContent.text_content()
+        result[1] = text
     return result
   
   def processFile(self, f):
@@ -42,5 +73,5 @@ class TextExtractor:
       if re.match('.+\.html$',f):
         self.processFile(self.directory + f)
         
-#te = TextExtractor('www.amazon.com')
+#te = TextExtractor('www.bookdwarf.com')
 #te.process()
