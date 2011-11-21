@@ -3,26 +3,32 @@ import nltk
 import string
 
 class PhraseScorer:
-  corpusRoot = os.getcwd() + "/corpus/"
+  corpusRoot = os.getcwd() + "/corpus2/"
   
   def all_corpus_phrases():
 	bigrams = {}
 	
-	bigrams['{0} {1}'.format(w1, w2)] = True
+	dirList = os.listdir("./")
+	for d in dirList:
+		listing = os.listdir(corpusRoot)
+		for infile in listing:
+			if re.match('.+\.txt$',infile):
+				fillHash(bigrams,infile)
+
 	return bigrams
-  all_corpus_phrases = staticmethod(all_corpus_phrases)
+
+	#all_corpus_phrases = staticmethod(all_corpus_phrases)
   
-  def write_all_corpus_phrases():
-	# iterate over hash and write it to text file
-  write_all_corpus_phrases = staticmethod(write_all_corpus_phrases)
+  # def write_all_corpus_phrases():
+	#iterate over hash and write it to text file
+	# write_all_corpus_phrases = staticmethod(write_all_corpus_phrases)
   
   def __init__(self, score_file):
-    self.filename = filename # include directory path like "www.amazon.com/10t1.txt"
-    self.filepath = self.corpusRoot + filename
-	
+    self.filename = score_file # include directory path like "www.amazon.com/10t1.txt"
+    self.filepath = self.corpusRoot + score_file
       
-  def process(self,hashPhrases={}):
-	file = open(self.filepath,'r')
+  def fillHash(self,hashPhrases,fileName):
+	file = open(fileName,'r')
 	text = file.read()
 	# pos-tag the sentences
 	words = nltk.word_tokenize(text)
@@ -38,8 +44,11 @@ class PhraseScorer:
 		bg = w1,w2
 		if tp in tagTuples:
 			if tp not in hashPhrases:
-				hashPhrases.append(bg)
+				hashPhrases['{0} {1}'.format(w1, w2)] = True
 
+				
+				
+PhraseScorer('ruby.txt').all_corpus_phrases()
 # Example:
 # ts = TextSegmenter('www.bookdwarf.com/100t1.txt')
 # print ts.process()
