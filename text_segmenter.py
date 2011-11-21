@@ -26,8 +26,7 @@ class TextSegmenter:
 		tp = t1,t2
 		bg = w1,w2
 		if tp in tagTuples:
-			if bg not in wordTuples:
-				wordTuples.append(bg)
+			wordTuples.append(bg)
 	return wordTuples
 
 # Example:
