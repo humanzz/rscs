@@ -71,6 +71,8 @@ class TextExtractor:
     for f in listdir(self.directory):
       if re.match('.+\.html$',f):
         self.processFile(self.directory + f)
-        
-te = TextExtractor('www.bookdwarf.com')
-te.process()
+
+for d in os.listdir(TextExtractor.corpusRoot):
+  if os.path.isdir(os.path.join(TextExtractor.corpusRoot, d)):
+    print d
+    TextExtractor(d).process()
