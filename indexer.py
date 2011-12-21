@@ -1,12 +1,12 @@
 import os, os.path
 from whoosh import index
 from whoosh.fields import Schema, TEXT, ID
+from nltk.corpus import reuters
 
 class Indexer:
 
     urlsRoot = os.getcwd() + '/crawler_sources/'
-    corpusRoot = os.getcwd() + "/corpus/"
-    indexdir = corpusRoot + "/index/"
+    indexdir = os.getcwd() + "/index/"
     # TODO get proper corpus
     refCorpusRoot = os.getcwd()+'/corpus/test/'
 
@@ -29,11 +29,30 @@ class Indexer:
         # TODO we can stem the words in the index if we want to 
         # create index
         if not os.path.exists(Indexer.indexdir):
-            os.mkdir(indexdir)
+            os.mkdir(Indexer.indexdir)
         idx = index.create_in(Indexer.indexdir, schema)
         # add documents to index
         Indexer.add_documents(idx,Indexer.refCorpusRoot)
     index = staticmethod(index)
+    
+    def index_reuters():
+        # create schema
+        schema = Schema(path=ID(stored=True),
+                content=TEXT)
+        # TODO we can stem the words in the index if we want to 
+        # create index
+        if not os.path.exists(Indexer.indexdir):
+            os.mkdir(Indexer.indexdir)
+        idx = index.create_in(Indexer.indexdir, schema)
+        # add reuters files
+        fileIds = reuters.fileids()
+        for i in fileIds:
+            print i
+            text_content = reuters.raw(i)
+            writer = idx.writer()
+            writer.add_document(path=unicode(i), content=unicode(text_content))
+            writer.commit()
+    index_reuters = staticmethod(index_reuters)
     
     def get_index():
         if not os.path.exists(Indexer.indexdir):
@@ -43,5 +62,6 @@ class Indexer:
     get_index = staticmethod(get_index)
     
 # example usage 
-Indexer.index(Indexer.refCorpusRoot)
+# Indexer.index(Indexer.refCorpusRoot)
+Indexer.index_reuters()
 
