@@ -49,9 +49,11 @@ class Indexer:
         for i in fileIds:
             print i
             text_content = reuters.raw(i)
+            print text_content
             writer = idx.writer()
             writer.add_document(path=unicode(i), content=unicode(text_content))
             writer.commit()
+            # TO BE DELETED!!
             if (i=="test/14903"):
                 break
         return idx
@@ -60,7 +62,7 @@ class Indexer:
     def get_index():
         if not os.path.exists(Indexer.indexdir):
             # return indexer.index(Indexer.refCorpusRoot)
-            return index_reuters()
+            return Indexer.index_reuters()
         else : 
             return index.open_dir(Indexer.indexdir)
     get_index = staticmethod(get_index)

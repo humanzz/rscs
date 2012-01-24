@@ -20,11 +20,20 @@ class Searcher:
             return len(res) 
     search_near = staticmethod(search_near)
     
+    def search(idx,word):
+        with idx.searcher() as s:
+            qp = QueryParser("content", schema=idx.schema)
+            q = qp.parse(unicode(word))
+            res = s.search(q)
+            return len(res)
+    search = staticmethod(search)
+    
 # example usage
-idx = Indexer.get_index()
-res = Searcher.search_near(idx, "was", "she", 5)
-print res
-#print len(res)
+#idx = Indexer.get_index()
+# res = Searcher.search_near(idx, "was", "she", 5)
+# print res
+#res = Searcher.search(idx,"billion")
+#print res
 
 # to investigate words in the corpus
 #try:

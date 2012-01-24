@@ -5,6 +5,7 @@ from searcher import Searcher
 from indexer import Indexer
 from phrase_extractor import PhraseExtractor
 
+
 class Scorer:
   phrasesRoot = os.getcwd() + "/phrases/"
   
@@ -35,6 +36,7 @@ class Scorer:
       fo.close()
   score_phrases = staticmethod(score_phrases)
   
+
   def __init__(self, filename="scored.txt"):
     self.filename = os.path.join(Scorer.phrasesRoot, filename)
     self.scores = {}
@@ -74,4 +76,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-  
+
