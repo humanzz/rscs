@@ -29,11 +29,11 @@ class Searcher:
     search = staticmethod(search)
     
 # example usage
-idx = Indexer.get_index()
+#idx = Indexer.get_index()
 # res = Searcher.search_near(idx, "was", "she", 5)
 # print res
-res = Searcher.search(idx,"billion")
-print res
+#res = Searcher.search(idx,"billion")
+#print res
 
 # to investigate words in the corpus
 #try:
