@@ -73,6 +73,7 @@ def main():
   #print scorer.scores
   #print scorer.semantic_orientation({"weird cover":3,"popular radio":2, "new trend":1})
   #Scorer.score_phrases("unscored.txt", "scored_10.txt", 10)
+  print ""
 
 if __name__ == "__main__":
     main()
