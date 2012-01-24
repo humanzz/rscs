@@ -13,6 +13,8 @@
 
 import urllib
 import simplejson
+import pprint
+import time
 
 # ASK humanzz if you don't have that file
 BING_APPID = open('bingappid','r').read()
@@ -43,9 +45,15 @@ class Search:
     return res
   hits = staticmethod(hits)
   
+  def delayed_hits(query, delay=15, search_engine = "bing"):
+    time.sleep(delay)
+    return Search.hits(query, search_engine)
+  delayed_hits = staticmethod(delayed_hits)
+  
   def hits_near(phrase, near_to, search_engine = "bing"):
     return Search.hits('"{0}" near:9 {1}'.format(phrase, near_to), search_engine)
   hits_near = staticmethod(hits_near)
   
 #print Search.hits("ahmed near:9 sobhi")
 #print Search.hits_near("audi r8", "excellent")
+#print Search.delayed_hits("\"Great book\" NEAR excellent")
