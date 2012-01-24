@@ -49,13 +49,12 @@ class Indexer:
         for i in fileIds:
             print i
             text_content = reuters.raw(i)
-            print text_content
             writer = idx.writer()
             writer.add_document(path=unicode(i), content=unicode(text_content))
             writer.commit()
             # TO BE DELETED!!
-            if (i=="test/14903"):
-                break
+            #if (i=="test/14903"):
+            #    break
         return idx
     index_reuters = staticmethod(index_reuters)
     

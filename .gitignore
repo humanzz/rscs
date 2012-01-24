@@ -6,6 +6,7 @@ Compiled source #
 *.exe
 *.o
 *.so
+*.pyc
 
 # Packages #
 ############
