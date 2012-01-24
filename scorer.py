@@ -10,7 +10,7 @@ class Scorer:
   phrasesRoot = os.getcwd() + "/phrases/"
   
   # Get unscored phrase list file
-  # and return scored phrase list file
+  # and return scored phrase file
   def score_phrases(input_file,output_file):
       # open files
       fi = open(Scorer.phrasesRoot+input_file, 'r')
