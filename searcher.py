@@ -17,7 +17,7 @@ class Searcher:
             # The problem of returning the res object is that somehow
             # we won't be able to call len(res) outside of this function 
             # i dunno whyyyy :s
-            return res 
+            return len(res) 
     search_near = staticmethod(search_near)
     
 # example usage
