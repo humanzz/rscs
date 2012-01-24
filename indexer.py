@@ -52,16 +52,20 @@ class Indexer:
             writer = idx.writer()
             writer.add_document(path=unicode(i), content=unicode(text_content))
             writer.commit()
+            if (i=="test/14903"):
+                break
+        return idx
     index_reuters = staticmethod(index_reuters)
     
     def get_index():
         if not os.path.exists(Indexer.indexdir):
-            return indexer.index(Indexer.refCorpusRoot)
+            # return indexer.index(Indexer.refCorpusRoot)
+            return index_reuters()
         else : 
             return index.open_dir(Indexer.indexdir)
     get_index = staticmethod(get_index)
     
 # example usage 
 # Indexer.index(Indexer.refCorpusRoot)
-Indexer.index_reuters()
-
+# Indexer.index_reuters()
+Indexer.get_index()
