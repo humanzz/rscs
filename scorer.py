@@ -1,10 +1,11 @@
 import os
 import re
 import math
+import time
 from searcher import Searcher
 from indexer import Indexer
 from phrase_extractor import PhraseExtractor
-
+from search import Search
 
 class Scorer:
   phrasesRoot = os.getcwd() + "/phrases/"
@@ -15,23 +16,26 @@ class Scorer:
       fo = open(Scorer.phrasesRoot+output_file, 'w')
       # get hits of "poor" and "excellent"
       idx = Indexer.get_index()
-      hits_poor = Searcher.search(idx,"poor")
-      hits_exc = Searcher.search(idx,"excellent")
+#      hits_poor = Searcher.search(idx,"poor")
+      hits_poor = Search.delayed_hits("poor")
+#      hits_exc = Searcher.search(idx,"excellent")
+      hits_exc = Search.delayed_hits("excellent")
       # iterate input file
-      # TO BE DELETED!!
-      i = 1
       for phrase in fi:
-          i = i+1
+          print phrase
           phrase = re.sub("\s+$","", phrase)
-          hits_ph_poor = Searcher.search_near(idx,phrase,"poor",distance)
-          hits_ph_exc = Searcher.search_near(idx,phrase,"exc",distance)
+          print Searcher.search(idx,phrase)
+#          hits_ph_poor = Searcher.search_near(idx,phrase,"poor",distance)
+          hits_ph_poor = Search.delayed_hits("\""+phrase+"\" NEAR poor")
+          print hits_ph_poor
+#          hits_ph_exc = Searcher.search_near(idx,phrase,"exc",distance)
+          hits_ph_exc = Search.delayed_hits("\""+phrase+"\" NEAR excellent")
+          print hits_ph_exc
           so = 0
           if(hits_ph_poor > 0 and hits_exc > 0):
               so = math.log((hits_ph_exc * hits_poor)/(hits_ph_poor * hits_exc),2)
-          print so
           fo.write(phrase+" "+str(so)+"\n")
-          if(i>10):
-              break
+          fo.flush()
       fi.close()
       fo.close()
   score_phrases = staticmethod(score_phrases)
@@ -72,7 +76,7 @@ def main():
   #scorer = Scorer()
   #print scorer.scores
   #print scorer.semantic_orientation({"weird cover":3,"popular radio":2, "new trend":1})
-  #Scorer.score_phrases("unscored.txt", "scored_10.txt", 10)
+  Scorer.score_phrases("unscored.txt", "scored_10.txt", 10)
   print ""
 
 if __name__ == "__main__":
