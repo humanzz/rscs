@@ -16,14 +16,13 @@ class Scorer:
       fi = open(Scorer.phrasesRoot+input_file, 'r')
       fo = open(Scorer.phrasesRoot+output_file, 'w')
       # get hits of "poor" and "excellent"
-      hits_poor = Search.delayed_hits("poor",5)
-      hits_exc = Search.delayed_hits("excellent",5)
+      hits_poor = Search.delayed_hits("poor")
+      hits_exc = Search.delayed_hits("excellent")
       # iterate input file
       for phrase in fi:
           phrase = re.sub("\s+$","", phrase)
-          # TODO: ADJUST THE TIMING DELAY
-          hits_ph_poor = Search.delayed_hits("\""+phrase+"\" NEAR poor",5)
-          hits_ph_exc = Search.delayed_hits("\""+phrase+"\" NEAR excellent",5)
+          hits_ph_poor = Search.delayed_hits("\""+phrase+"\" NEAR poor")
+          hits_ph_exc = Search.delayed_hits("\""+phrase+"\" NEAR excellent")
           so = 0
           if(hits_ph_poor > 0 and hits_exc > 0 and hits_ph_exc > 0 and hits_poor > 0):
               so = math.log((hits_ph_exc * hits_poor)/(hits_ph_poor * hits_exc),2)
@@ -52,7 +51,8 @@ class Scorer:
       if phrase in self.scores:
         so = so + self.scores[phrase]
         length = length + 1
-    so = so / length
+    if so > 0:
+      so = so / length
     return so
 
   # Reads a file, extracts relevant phrases and
@@ -66,11 +66,12 @@ class Scorer:
 
     
 def main():
+  print "In progress..."
   #scorer = Scorer()
   #print scorer.scores
   #print scorer.semantic_orientation({"weird cover":3,"popular radio":2, "new trend":1})
-  Scorer.score_phrases("unscored.txt", "scored_10.txt")
-  print ""
+  Scorer.score_phrases("unscored.txt", "scored.txt")
+  
 
 if __name__ == "__main__":
     main()
