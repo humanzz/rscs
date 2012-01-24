@@ -69,4 +69,4 @@ class PhraseExtractor:
   fillHash = staticmethod(fillHash)
 
 #PhraseExtractor.write_all_corpus_phrases(PhraseExtractor.file_phrases(os.path.join(PhraseExtractor.corpusRoot, "www.amazon.com", "1t1.txt")))
-PhraseExtractor.write_all_corpus_phrases(PhraseExtractor.all_corpus_phrases())
+#PhraseExtractor.write_all_corpus_phrases(PhraseExtractor.all_corpus_phrases())
