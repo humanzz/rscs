@@ -34,14 +34,18 @@ class Search:
   bing = staticmethod(bing)
   
   def hits(query, search_engine = "bing"):
-    #print query
     res = getattr(Search, search_engine)(query)
     #print res['SearchResponse'].keys()
     #print res['SearchResponse']['News'].keys(), res['SearchResponse']['News']['Total'], res['SearchResponse']['News']['Results']
     if search_engine == "bing":
-      res = res['SearchResponse']['Web']['Total']
+      if 'SearchResponse' in res and 'Web' in res['SearchResponse']:
+        res = res['SearchResponse']['Web']['Total']
+      else:
+        res = 0
     elif search_engine == "google":
       res = res['responseData']['cursor']['estimatedResultCount']
+      
+    print '{0}: {1}'.format(query, res)
     return res
   hits = staticmethod(hits)
   
@@ -56,4 +60,4 @@ class Search:
   
 #print Search.hits("ahmed near:9 sobhi")
 #print Search.hits_near("audi r8", "excellent")
-#print Search.delayed_hits("\"Great book\" NEAR excellent")
+#pprint.pprint(Search.bing("\"negative parts\" NEAR poor"))
