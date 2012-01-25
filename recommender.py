@@ -42,8 +42,8 @@ class Recommender:
     return scores
               
 def main():
-  r = Recommender("scoredg.txt")
-  r.recommend("recommendationsg.txt")
+  r = Recommender("scorede.txt")
+  r.recommend("recommendationse.txt")
 
 if __name__ == "__main__":
     main()

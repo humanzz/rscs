@@ -32,7 +32,7 @@ class Statistics:
           if re.match('.+\.txt$',f):
             nbBigram, nbPhrase = Statistics.get_file_stat(os.path.join(Statistics.corpusRoot, d, f))
             totalBigram = totalBigram + nbBigram
-            totalPhrase = totalPhrase + totalPhrase
+            totalPhrase = totalPhrase + nbPhrase
             if nbBigram > maxBigram:
                 maxBigram = nbBigram
             if nbBigram < minBigram:
@@ -74,14 +74,11 @@ class Statistics:
         if tp not in hashPhrases:
             hashPhrases['{0} {1}'.format(w1, w2)] = True
             nbPhrases = nbPhrases + 1
-    print fileName
-    print nbBigram
-    print nbPhrases
+    if nbBigram == 0:
+      print "0 bigrams found in: {0}".format(fileName)
     return nbBigram, nbPhrases
   get_file_stat = staticmethod(get_file_stat)
 
-#PhraseExtractor.write_all_corpus_phrases(PhraseExtractor.file_phrases(os.path.join(PhraseExtractor.corpusRoot, "www.amazon.com", "1t1.txt")))
-#PhraseExtractor.write_all_corpus_phrases(PhraseExtractor.all_corpus_phrases())
 maxBigram, minBigram, avgBigram, minPhrase, maxPhrase, avgPhrase = Statistics.get_corpus_stat()
 print "max bigram: " + str(maxBigram)
 print "min bigram: " + str(minBigram)

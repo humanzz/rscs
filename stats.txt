@@ -1,4 +1,30 @@
-count of zeros (cat phrases/scored.txt | grep ' 0$' | wc -l)
+---------------
+Useful Snippets
+---------------
+# count of zeros (cat phrases/scored.txt | grep ' 0$' | wc -l)
+# zeros cat recommendationsg.txt | grep ' 0$' | wc -l
+# zeros cat recommendationsg.txt | grep ' 0.0$' | wc -l
+# negative cat recommendationsg.txt | grep ' -[0-9]' | wc -l
+
+------------
+Small Corpus
+------------
 phrases/scorede.txt: 1735/2878 = 60% zeros
 phrases/scoredg.txt: 1288/2878 = 44% zeros
 
+max bigram: 1476
+min bigram: 0
+avg bigram: 294
+min phrase: 0
+max phrase: 90
+avg phrase: 13
+
+recommendationsg.txt (233 recommendation)
+91 zeros 39%
+94 negative 40%
+48 positive 21%
+
+recommendationse.txt (233 recommendation)
+88 zeros 38%
+100 negative 43%
+45 positive 19%
