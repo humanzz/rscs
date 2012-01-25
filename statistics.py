@@ -47,7 +47,7 @@ class Statistics:
     if n>0:
         avgBigram = totalBigram/n
         avgPhrase = totalPhrase/n
-    return maxBigram, minBigram, totalBigram/n, minPhrase, maxPhrase, totalPhrase/n
+    return maxBigram, minBigram, avgBigram, minPhrase, maxPhrase, avgPhrase
   get_corpus_stat = staticmethod(get_corpus_stat)
       
   # Get number of bigram and number of phrases in a file
