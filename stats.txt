@@ -1,0 +1,4 @@
+count of zeros (cat phrases/scored.txt | grep ' 0$' | wc -l)
+phrases/scorede.txt: 1735/2878 = 60% zeros
+phrases/scoredg.txt: 1288/2878 = 44% zeros
+
