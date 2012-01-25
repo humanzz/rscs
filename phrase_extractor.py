@@ -10,8 +10,11 @@ import re
 #   bigrams = PhraseExtractor.file_phrases(os.path.join(PhraseExtractor.corpusRoot, "www.amazon.com", "1t1.txt"),{})
 #   PhraseExtractor.write_all_corpus_phrases(PhraseExtractor.all_corpus_phrases())
 class PhraseExtractor:
-  corpusRoot = os.path.join(os.getcwd(), "corpus")
-  phrasesRoot = os.path.join(os.getcwd(), "phrases")
+  #corpusRoot = os.path.join(os.getcwd(), "corpus")
+  #phrasesRoot = os.path.join(os.getcwd(), "phrases")
+  corpusRoot = os.path.join(os.getcwd(), "corpus_big")
+  phrasesRoot = os.path.join(os.getcwd(), "phrases_big")
+  
   tagTuples = [('JJ','NN'),('JJ','NNS'),('RB','JJ'),('RBR','JJ'),('RBS','JJ'),
                ('JJ','JJ'),('NN','JJ'),('NNS','JJ'),('RB','VB'),('RBR','VB'),
                ('RBS','VB'),('RB','VBD'),('RBR','VBD'),('RBS','VBD'),('RB','VBN'),

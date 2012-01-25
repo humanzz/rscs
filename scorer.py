@@ -7,7 +7,7 @@ from phrase_extractor import PhraseExtractor
 from search import Search
 
 class Scorer:
-  phrasesRoot = os.getcwd() + "/phrases/"
+  phrasesRoot = os.getcwd() + "/phrases_big/"
   
   # Get unscored phrase list file
   # and return scored phrase file
@@ -64,7 +64,7 @@ class Scorer:
 
 
 
-    
+
 def main():
   print "In progress..."
   #scorer = Scorer()
@@ -75,4 +75,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

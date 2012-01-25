@@ -49,7 +49,7 @@ class Search:
     return res
   hits = staticmethod(hits)
   
-  def delayed_hits(query, delay=2, search_engine = "bing"):
+  def delayed_hits(query, delay=1, search_engine = "bing"):
     time.sleep(delay)
     return Search.hits(query, search_engine)
   delayed_hits = staticmethod(delayed_hits)
