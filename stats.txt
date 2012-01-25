@@ -13,11 +13,11 @@ phrases/scorede.txt: 1735/2878 = 60% zeros
 phrases/scoredg.txt: 1288/2878 = 44% zeros
 
 max bigram: 1476
-min bigram: 0
-avg bigram: 294
+min bigram: 2
+avg bigram: 316
 min phrase: 0
 max phrase: 90
-avg phrase: 13
+avg phrase: 14
 
 recommendationsg.txt (233 recommendation)
 91 zeros 39%
